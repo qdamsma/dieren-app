@@ -1,0 +1,65 @@
+/* fonts */
+@font-face {
+    font-family: 'Baloo';
+    src: url('/fonts/Baloo.ttf'); 
+}
+
+/* alle pagina's */
+body{
+    margin: 0;
+    background-color: #FFF2E4;
+    font-family: 'Baloo';
+}
+
+/* de navigatiebalk */
+.navigatienav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center; 
+    margin: 0 auto;
+    list-style-type: none;
+    background-color: #F4DDC3;
+    height: 100px;
+    box-shadow: 0 4px 5px -2px rgba(0, 0, 0, 0.2);
+}
+.navigatie{
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid white;
+    width: 100%;
+}
+.logo-image {
+    height: 80px;
+}
+.navitem{
+    padding: 4px 32px;
+    margin-left: auto;
+}
+.linktext{
+    font-size: 170%;
+    color: white;
+}
+.navlink{
+    text-decoration: none;
+}
+
+
+/* tekst */
+h1{
+    margin: 0;
+    color: #7f6a53; 
+}
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center; 
+    text-align: center;
+}
+.kopje {
+    font-size: 1.2em; 
+    color: #AD9174; 
+    margin-top: 0.5em; 
+    width: 500px;
+}

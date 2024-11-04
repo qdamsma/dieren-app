@@ -17,6 +17,9 @@
              <p>Geen contacten</p>
         @endforelse
     </div>
+    <div>
+        <a href='{{ route('contacts.create') }}'>Create contact</a></p>
+    </div>
 </body>
 
 </html>

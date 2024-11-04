@@ -1,36 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\ContactNoteController;
 
-function getContacts() {
-    return
-    [
-        1 => ['name' => 'Naam 1', 'phone' => '1234567890'],
-        2 => ['name' => 'Naam 2', 'phone' => '0124567890'],
-        3 => ['name' => 'Naam 3', 'phone' => '9014567890'],
-        4 => ['name' => 'Naam 4', 'phone' => '8904567890'],
-        5 => ['name' => 'Naam 5', 'phone' => '7894567890'],
-        6 => ['name' => 'Naam 6', 'phone' => '6784567890'],
-    ]; 
-}
+Route::get('/', WelcomeController::class);
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(ContactController::class)->name('contacts.')->group(function () {
+    Route::get('/contacts', 'index')->name('index');
+    Route::get('/contacts/create', 'create')->name('create');
+    Route::get('/contacts/{id}', 'show')->name('show');
 });
 
-Route::get('/contacts', function () {
-    $contacts = getContacts();
-    return view('contacts.index', compact('contacts'));
-})->name('contacts.index');
+Route::resource('/companies', CompanyController::class);
+Route::resources([
+    '/tags' => TagController::class, 
+    '/tasks' => TaskController::class
+]);
+Route::resource('/activities', ActivityController::class)->except(['index', 'show']);
+Route::resource('/contacts.notes', ContactNoteController::class)->shallow();
 
-Route::get('/contacts/create', function () {
-    return view('contacts.create');
-})->name('contacts.create');
-
-Route::get('/contacts/{id}', function ($id) {
-    $contacts = getContacts();
-    abort_unless(isset($contacts[$id]), 404);
-    $contact = $contacts[$id];
-    return view('contacts.show')->with('contact', $contact);
-})->name('contacts.show');;
  

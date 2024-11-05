@@ -24,5 +24,4 @@ Route::resources([
 ]);
 Route::resource('/activities', ActivityController::class)->except(['index', 'show']);
 Route::resource('/contacts.notes', ContactNoteController::class)->shallow();
-
  

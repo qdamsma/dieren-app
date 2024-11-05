@@ -18,7 +18,7 @@
         @endforelse
     </div>
     <div>
-        <a href='{{ route('contacts.create') }}'>Create contact</a></p>
+        <a href='{{ route('contacts.create') }}'>Create contact</a>
     </div>
 </body>
 

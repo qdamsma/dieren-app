@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/', WelcomeController::class);
 
 Route::controller(ContactController::class)->name('contacts.')->group(function () {
-    Route::get('/contacts', 'index')->name('index');
+    Route::get('/contacts', 'index')->middleware(['auth', 'verified'])->name('index');
     Route::get('/contacts/create', 'create')->name('create');
     Route::get('/contacts/{id}', 'show')->name('show');
 });

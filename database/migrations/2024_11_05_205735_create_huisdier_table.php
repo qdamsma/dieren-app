@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('huisdier', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('leeftijd');
-            $table->string('diertype');
+            $table->integer('age');
+            $table->string('animaltype');
+            $table->longText('note');
             $table->timestamps();
         });
     }

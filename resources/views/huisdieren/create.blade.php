@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ asset('css/huisdierenprofiel.css') }}">
     <link rel="stylesheet" href="{{ asset('css/welcomepage.css') }}">
     <title>Document</title>
 </head>
+
 <body>
     <nav class="navigatie">
         <ul class="navigatienav">
@@ -17,7 +20,6 @@
                 @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                     @auth
-                    <a href="{{ route('profile.show') }}" class="btn btn-secondary">Bekijk profiel</a>
                         <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                             @csrf
                             <button type="submit" class="button">Logout</button>
@@ -34,15 +36,46 @@
             </li>
         </ul>
     </nav>
-    <header class="intro">
-        <div class="container">
-            <h1>Dashboard</h1>
-            <div class="header">
-                <h2>Maak een profiel voor je huisdier</h2>
-                <a href="{{ route('huisdieren.create') }}" class="btn btn-primary">Nieuw profiel aanmaken</a>
-            </div>
-            <!-- Je overige dashboard content hier -->
+    <div class="button-container">
+        <button type="button" onclick="window.history.back()" class="button">Terug</button>
+    </div>
+    <form method="POST" action="{{ route('huisdieren.store') }}" class="form-container">
+        @csrf
+
+        <div>
+            <label for="name">Naam</label>
+            <input id="name" type="text" name="name" value="{{ old('name') }}" required>
+            @error('name') <span class="error">{{ $message }}</span> @enderror
         </div>
-    </header>
+
+        <div>
+            <label for="age">Leeftijd</label>
+            <input id="age" type="text" name="age" value="{{ old('age') }}" required>
+            @error('age') <span class="error">{{ $message }}</span> @enderror
+        </div>
+
+        <div>
+            <label for="animaltype">Soort dier</label>
+            <input id="animaltype" type="text" name="animaltype" value="{{ old('animaltype') }}" required>
+            @error('animaltype') <span class="error">{{ $message }}</span> @enderror
+        </div>
+
+        <div>
+            <label for="note">Beschrijving</label>
+            <textarea id="note" name="note">{{ old('note') }}</textarea>
+            @error('note') <span class="error">{{ $message }}</span> @enderror
+        </div>
+
+        <button type="submit" class="button">Maak Huisdier aan</button>
+    </form>
+
+    @if (session('success'))
+    <div class="succes-container">
+        <div class="success">
+            {{ session('success') }}
+        </div>
+    </div>
+    @endif
 </body>
+
 </html>

@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Huisdier extends Model
 {
-    protected $table = 'huisdieren';
+    protected $table = 'huisdier';
+
+    protected $fillable = [
+        'name', 'eigenaar_id', 'age', 'animaltype', 'note',
+    ];
 }

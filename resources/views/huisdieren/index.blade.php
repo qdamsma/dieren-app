@@ -11,14 +11,14 @@
 <body>
     <h1>Contact App</h1>
     <div>
-        @forelse ($contacts as $id => $contact)
-             <p>{{ $contact['name'] }} | {{ $contact['phone'] }} | <a href='{{ route('contacts.show', $id) }}'>Show contact</a></p>
+        @forelse ($huisdieren as $id => $huisdieren)
+             <p>{{ $huisdieren['name'] }} | {{ $huisdieren['phone'] }} | <a href='{{ route('huisdieren.show', $id) }}'>Show contact</a></p>
              @empty
              <p>Geen contacten</p>
         @endforelse
     </div>
     <div>
-        <a href='{{ route('contacts.create') }}'>Create contact</a>
+        <a href='{{ route('huisdieren.create') }}'>Create contact</a>
     </div>
 </body>
 

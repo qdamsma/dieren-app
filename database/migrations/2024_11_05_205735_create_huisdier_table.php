@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('age');
             $table->string('animaltype');
-            $table->longText('note');
+            $table->longText('note')->nullable();;
             $table->timestamps();
         });
     }

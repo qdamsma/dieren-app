@@ -56,14 +56,6 @@ class AfspraakController extends Controller
          return view('afspraken.show', compact('afspraak'));
     }
 
-    public function accept($id)
-    {
-    // Zoek de afspraak en zet de status naar 'geaccepteerd'
-    $afspraak = Afspraak::findOrFail($id);
-    $afspraak->status = 'geaccepteerd';
-    $afspraak->save();
-    return redirect()->route('afspraak.show', $afspraak->id)->with('status', 'Afspraak geaccepteerd!');
-}
 public function storeReview(Request $request, $afspraakId)
 {
     $validatedData = $request->validate([
@@ -80,5 +72,36 @@ public function storeReview(Request $request, $afspraakId)
     ]);
 
     return redirect()->route('afspraak.show', $afspraak->id)->with('success', 'Review succesvol toegevoegd!');
+}
+
+public function aanvraag(Request $request, $id)
+{
+    $afspraak = Afspraak::findOrFail($id);
+    $afspraak->status = 'aangevraagd';
+    $afspraak->save();
+
+    return redirect()->route('dashboard')->with('status', 'Afspraak is aangevraagd. Wacht op goedkeuring van de eigenaar.');
+}
+public function accept($id)
+{
+    $afspraak = Afspraak::findOrFail($id);
+    $afspraak->status = 'geaccepteerd';
+    $afspraak->save();
+
+    return redirect()->route('dashboard')->with('status', 'Afspraak is goedgekeurd.');
+}
+
+public function weiger($id)
+{
+    $afspraak = Afspraak::findOrFail($id);
+    $afspraak->status = 'geweigerd';
+    $afspraak->save();
+
+    return redirect()->route('dashboard')->with('status', 'Afspraak is geweigerd.');
+}
+public function destroy($id) {
+    $afspraak = Afspraak::findOrFail($id);
+    $afspraak->delete();
+    return redirect()->back()->with('status', 'Afspraak is verwijderd.');
 }
 }

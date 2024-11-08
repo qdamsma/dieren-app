@@ -19,7 +19,10 @@
                         @csrf
                         <button type="submit" class="button">Logout</button>
                     </form>
-                    <a href="{{ route('profile.show') }}" class="button">Bekijk profiel</a>
+                    <a href="{{ route('dashboard') }}">
+                        <button type="button" class="button">Terug</button>
+                    </a>
+                    <a href="{{ route('profile.show') }}" class="button">Profiel</a>
                 @else
                     <a href="{{ route('login') }}" class="button">Log in</a>
                 @endauth
@@ -41,10 +44,24 @@
             <p><strong>Opmerkingen:</strong> {{ $afspraak->opmerkingen }}</p>
         </div>
 
+        @if(Auth::check() && Auth::user()->id === $afspraak->eigenaar_id && $afspraak->status === 'aangevraagd')
         <div>
-            <form action="{{ route('afspraak.accept', $afspraak->id) }}" method="POST">
+            <p><strong>Actie vereist:</strong> Deze afspraak moet worden goedgekeurd of geweigerd.</p>
+            <form action="{{ route('afspraak.accept', $afspraak->id) }}" method="POST" style="display: inline;">
                 @csrf
-                <button type="submit" class="button">Accepteer Afspraak</button>
+                <button type="submit" class="button">Goedkeuren</button>
+            </form>
+            <form action="{{ route('afspraak.weiger', $afspraak->id) }}" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit" class="button">Weigeren</button>
+            </form>
+        </div>
+    @endif
+
+        <div>
+            <form action="{{ route('afspraak.aanvraag', $afspraak->id) }}" method="POST">
+                @csrf
+                <button type="submit" class="button">Vraag Afspraak Aan</button>
             </form>
         </div>
         @if($afspraak->status === 'geaccepteerd')

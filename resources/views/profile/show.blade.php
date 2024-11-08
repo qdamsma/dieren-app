@@ -22,7 +22,7 @@
                                 <button type="submit" class="button">Logout</button>
                             </form>
                             <a href="{{ route('dashboard') }}" class="button">
-                                Terug naar dashboard
+                                Terug
                             </a>
                         @else
                             <a href="{{ route('login') }}">Log in</a>

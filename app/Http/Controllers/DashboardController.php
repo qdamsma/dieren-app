@@ -7,9 +7,18 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function show()
+    public function show(Request $request)
     {
-        $afspraken = Afspraak::with('huisdier')->get();
+
+        $uurtarief = $request->input('uurtarief');
+
+        $query = Afspraak::with('huisdier');
+
+        if ($uurtarief) {
+            $query->where('uurtarief', '>', $uurtarief);
+        }
+
+        $afspraken = $query->get();
 
         return view('dashboard', compact('afspraken'));
     }

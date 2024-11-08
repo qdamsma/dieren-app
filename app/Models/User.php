@@ -25,6 +25,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Afspraak::class);
     }
+    public function isAdmin() {
+        return $this->role === 'admin';
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -37,6 +40,7 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'is_blocked',
     ];
 
     /**

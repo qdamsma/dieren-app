@@ -16,7 +16,7 @@
             </li>
             <li class="navitem">
                 @auth
-                    <a href="{{ route('profile.edit') }}" class="btn btn-secondary">Bekijk profiel</a>
+                    <a href="{{ route('profile.edit') }}" class="button">Bekijk profiel</a>
                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                         @csrf
                         <button type="submit" class="button">Logout</button>

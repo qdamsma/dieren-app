@@ -17,6 +17,7 @@
                 @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                     @auth
+                    <div class="knoppen">
                         <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                             @csrf
                             <button type="submit" class="button">Logout</button>
@@ -25,6 +26,7 @@
                             Bekijk profiel
                             <img src="{{ asset('images/profile icon.png') }}" alt="Logo" class="profile-image">
                         </a>
+                    </div>
                     @else
                         <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
@@ -38,6 +40,7 @@
         </ul>
     </nav>
     <header class="intro">
+        
         <div class="afspraak-container">
             <div class="cards-wrapper">
                 <div class="card">
@@ -57,6 +60,11 @@
                 </div>
             </div>
             <h2>Afspraken</h2>
+            <form action="{{ route('dashboard') }}" method="GET">
+                <label for="uurtarief">Uurtarief:</label>
+                <input type="number" step="0.01" id="uurtarief" name="uurtarief" value="{{ request('uurtarief') }}">
+                <button type="submit" class="button">Filteren</button>
+            </form>
             @if($afspraken->isEmpty())
                 <p>Er zijn momenteel geen afspraken.</p>
             @else
@@ -69,6 +77,13 @@
                             <p><strong>Startdatum:</strong> {{ $afspraak->start_datum }}</p>
                             <p><strong>Einddatum:</strong> {{ $afspraak->eind_datum }}</p>
                             <p><strong>Uurtarief:</strong> €{{ $afspraak->uurtarief }}</p>
+                            @if(Auth::check() && Auth::user()->isAdmin())
+                        <form action="{{ route('afspraak.delete', $afspraak->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="button">Verwijderen</button>
+                        </form>
+                        @endif
                         </div>
                     @endforeach
                 </div>

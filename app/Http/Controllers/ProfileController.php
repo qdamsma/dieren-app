@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Afspraak;
 
 class ProfileController extends Controller
 {
@@ -73,6 +74,8 @@ class ProfileController extends Controller
             $huizen = [];
         }
 
-        return view('profile.show', compact('user', 'huisdieren', 'huizen'));
+        $afspraken = Afspraak::where('eigenaar_id', $user->id)->where('status', 'geaccepteerd')->get();
+
+        return view('profile.show', compact('user', 'huisdieren', 'huizen', 'afspraken'));
     }
 }

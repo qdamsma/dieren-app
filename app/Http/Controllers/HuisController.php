@@ -21,13 +21,10 @@ class HuisController extends Controller
         'picture_house' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    if ($request->hasFile('picture_house')) {
-        $image = $request->file('picture_house');
-        $path = $image->store('house_pictures', 'public'); // Sla op in de map 'house_pictures' in de 'public' opslag
-        $validatedDatahuis['picture_house'] = $path;
-    }
+    $imagePath = $request->file('picture_house')->storeAs('images', $request->file('picture_house')->getClientOriginalName(), 'public');
 
     $validatedData['eigenaar_id'] = auth()->id(); 
+    $validatedData['picture_house'] = $imagePath;
    
     Huis::create($validatedData);
 

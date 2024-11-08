@@ -21,6 +21,10 @@ class User extends Authenticatable
     {
     return $this->hasMany(Huis::class, 'eigenaar_id'); 
     }
+    public function afspraken()
+    {
+        return $this->hasMany(Afspraak::class);
+    }
 
     /**
      * The attributes that are mass assignable.

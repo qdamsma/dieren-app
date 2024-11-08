@@ -27,12 +27,5 @@ class HuisdierSeeder extends Seeder
             "age" => "20",
             "animaltype" => "Kat",    
         ]);
-        // DB::table('huisdier')->insert([
-        //     "name" => "Lotje",
-        //     "eigenaar_id" => "1",
-        //     "age" => "20",
-        //     "animaltype" => "Kat",  
-        //     "huis_id" => "1",   
-        // ]);
     }
 }

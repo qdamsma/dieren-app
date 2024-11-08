@@ -10,25 +10,27 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('afspraken', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('huisdier_id');
-            $table->unsignedBigInteger('eigenaar_id');
-            $table->string('start_datum');
-            $table->string('eind_datum');
-            $table->time('tijd_start');
-            $table->time('tijd_eind');
-            $table->decimal('uurtarief', 8, 2);
-            $table->string('status', 50)->default('gepland');
-            $table->text('opmerkingen')->nullable();
-            $table->timestamps();
+{
+    Schema::create('afspraken', function (Blueprint $table) {
+        $table->id();
+        $table->unsignedBigInteger('huisdier_id');
+        $table->unsignedBigInteger('eigenaar_id');
+        $table->unsignedBigInteger('huis_id');
+        $table->string('start_datum');
+        $table->string('eind_datum');
+        $table->time('tijd_start');
+        $table->time('tijd_eind');
+        $table->decimal('uurtarief', 8, 2);
+        $table->string('status', 50)->default('gepland');
+        $table->text('opmerkingen')->nullable();
+        $table->timestamps();
 
-            // Foreign key constraints
-            $table->foreign('huisdier_id')->references('id')->on('huisdier')->onDelete('cascade');
-            $table->foreign('eigenaar_id')->references('id')->on('users')->onDelete('cascade');
-        });
-    }
+        // Foreign key constraints
+        $table->foreign('huisdier_id')->references('id')->on('huisdier')->onDelete('cascade');
+        $table->foreign('eigenaar_id')->references('id')->on('users')->onDelete('cascade');
+        $table->foreign('huis_id')->references('id')->on('huizen')->onDelete('cascade'); 
+    });
+}
 
     /**
      * Reverse the migrations.

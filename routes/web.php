@@ -6,6 +6,7 @@ use App\Http\Controllers\HuisdierenController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HuisController;
+use App\Http\Controllers\AfspraakController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +20,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 });
+
+Route::middleware('auth')->group(function () {
+    Route::get('/afspraak/aanmaken', [AfspraakController::class, 'create'])->name('afspraak.create');
+    Route::post('/afspraak', [AfspraakController::class, 'store'])->name('afspraak.store');
+    Route::get('/afspraak/{id}', [AfspraakController::class, 'show'])->name('afspraak.show');
+    Route::post('/afspraak/{id}/accept', [AfspraakController::class, 'accept'])->name('afspraak.accept');
+    Route::post('/afspraak/{afspraak}/review', [AfspraakController::class, 'storeReview'])->name('afspraak.storeReview');
+});
+
 
 Route::get('/', WelcomeController::class);
 

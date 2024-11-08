@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             HuisSeeder::class,
             HuisdierSeeder::class,
             AfspraakSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }

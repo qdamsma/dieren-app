@@ -57,6 +57,7 @@ h1{
     text-align: center;
 }
 .kopje {
+    text-align: center;
     font-size: 1.2em; 
     color: #AD9174; 
     margin-top: 0.5em; 
@@ -72,6 +73,7 @@ h1{
     border: none;
     border-radius: 5px; 
     cursor: pointer; 
+    text-decoration: none;
 }
 
 .button:hover {
@@ -106,12 +108,12 @@ h1{
     justify-content: space-between; /* Zorg voor gelijkmatige ruimte tussen de kaarten */
     gap: 20px; /* Voeg wat ruimte tussen de kaarten toe */
     margin-top: 20px;
-    width: 200px;
+    width: 300px;
 }
 
 /* Stijl voor elke huisdierkaart */
 .pet-card {
-    width: 200px;
+    width: 300px;
     background-color: white; 
     padding: 20px; 
     border-radius: 10px;
@@ -198,3 +200,15 @@ h1{
 .card p strong {
     font-weight: bold;
 }
+
+.profile-image {
+    width: 20px; /* Pas de grootte van de afbeelding aan */
+    height: 20px; /* Pas de grootte van de afbeelding aan */
+    margin-left: 10px; /* Voeg wat ruimte toe tussen de tekst en de afbeelding */
+    vertical-align: middle; /* Zorg ervoor dat de afbeelding verticaal in het midden staat */
+}
+
+.img-card{
+    width: 200px;
+}
+

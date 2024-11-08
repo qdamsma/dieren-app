@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('huizen', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('address');
-            $table->string('city');
-            $table->string('picture_house')->default("/public/images/Logo.png");
-            $table->timestamps();
-    });
+        $table->foreignId('afspraak_id')->constrained('afspraken')->onDelete('cascade');  // Verwijs naar 'afspraken'
+        $table->text('review');
+        $table->integer('rating')->default(5);
+        $table->timestamps();
+        });
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('huizen');
+        Schema::dropIfExists('reviews');
     }
 };

@@ -17,11 +17,14 @@
                 @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                     @auth
-                    <a href="{{ route('profile.show') }}" class="btn btn-secondary">Bekijk profiel</a>
                         <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                             @csrf
                             <button type="submit" class="button">Logout</button>
                         </form>
+                        <a href="{{ route('profile.show') }}" class="button">
+                            Bekijk profiel
+                            <img src="{{ asset('images/profile icon.png') }}" alt="Logo" class="profile-image">
+                        </a>
                     @else
                         <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
 
@@ -48,9 +51,9 @@
                     <a href="{{ route('huis.create') }}" class="button">Nieuwe huis maken</a>
                 </div>
                 <div class="card">
-                    <h3>Stap 2: Maak een nieuwe afspraak</h3>
+                    <h3>Stap 3: Maak een nieuwe afspraak</h3>
                     <p>Plan een nieuwe afspraak voor je huisdier en kies een datum en tijd.</p>
-                    <a href="{{ route('huisdieren.create') }}" class="button">Nieuwe afspraak maken</a>
+                    <a href="{{ route('afspraak.create') }}" class="button">Nieuwe afspraak maken</a>
                 </div>
             </div>
             <h2>Afspraken</h2>
@@ -60,6 +63,7 @@
                 <div class="cards-container">
                     @foreach($afspraken as $afspraak)
                         <div class="card">
+                            <a href="{{ route('afspraak.show', $afspraak->id) }}" class="button"> details</a>
                             <h3>{{ $afspraak->huisdier->name }}</h3>
                             <p>{{ $afspraak->huisdier->animaltype }}</p>
                             <p><strong>Startdatum:</strong> {{ $afspraak->start_datum }}</p>

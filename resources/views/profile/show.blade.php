@@ -21,6 +21,9 @@
                                 @csrf
                                 <button type="submit" class="button">Logout</button>
                             </form>
+                            <a href="{{ route('dashboard') }}" class="button">
+                                Terug naar dashboard
+                            </a>
                         @else
                             <a href="{{ route('login') }}">Log in</a>
 
@@ -36,9 +39,6 @@
 
     <header class="intro">
         <h1>Profiel Informatie</h1>
-        <p class="kopje">
-            <strong>Hier kun je de gegevens van je profiel zien en bewerken!</strong>
-        </p>
     </header>
 
     <div class="container">
@@ -61,6 +61,9 @@
                 <button type="button" class="button">Bewerk</button>
             </a>
         </div>
+        <p class="kopje">
+            <strong>Huisdieren</strong>
+        </p>
         <div class="pet-container">
             @foreach ($huisdieren as $huisdier)
                 <div class="pet-card">
@@ -69,20 +72,32 @@
                 </div>
             @endforeach
         </div>
+        <p class="kopje">
+            <strong>Huizen</strong>
+        </p>
         <div class="pet-container">
             @foreach ($huizen as $huis)
                 <div class="pet-card">
+                    <img src="{{ asset('storage/' . $huis->picture_house) }}" alt="home image" class="img-card">
                     <p><strong>Adres:</strong> {{ $huis->address }}</p>
                     <p><strong>Stad:</strong> {{ $huis->city }}</p>
-                    <img src="{{ Storage::url($huis->picture_house) }}" alt="Foto van het huis" class="house-image">
+                </div>
+            @endforeach
+        </div>
+        <p class="kopje">
+            <strong>Afspraken</strong>
+        </p>
+        <div class="pet-container">
+            @foreach ($afspraken as $afspraak)
+                <div class="pet-card">
+                    <p><strong>Huisdier:</strong> {{ $afspraak->huisdier->name }}</p>
+                    <p><strong>Startdatum:</strong> {{ $afspraak->start_datum }}</p>
+                    <p><strong>Einddatum:</strong> {{ $afspraak->eind_datum }}</p>
+                    <p><strong>Status:</strong> {{ $afspraak->status }}</p>
                 </div>
             @endforeach
         </div>
         
-
-        <div class="button-container">
-            <a href="{{ route('dashboard') }}" class="button">Terug naar Dashboard</a>
-        </div>
     </div>
 </body>
 </html>

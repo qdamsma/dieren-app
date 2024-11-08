@@ -17,6 +17,7 @@ class AfspraakSeeder extends Seeder
             [
                 'huisdier_id' => 1,
                 'eigenaar_id' => 1,
+                'huis_id' => 1,
                 'start_datum' => '10-11-2024',
                 'eind_datum' => '12-11-2024',
                 'tijd_start' => '09:00:00',
@@ -28,6 +29,7 @@ class AfspraakSeeder extends Seeder
             [
                 'huisdier_id' => 2,
                 'eigenaar_id' => 2,
+                'huis_id' => 2,
                 'start_datum' => '12-11-2024',
                 'eind_datum' => '14-11-2024',
                 'tijd_start' => '12:00:00',

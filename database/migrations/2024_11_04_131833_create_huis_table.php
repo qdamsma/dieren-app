@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('huisdier', function (Blueprint $table) {
+        Schema::create('huizen', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('age');
-            $table->string('animaltype');
-            $table->longText('note')->nullable();
+            $table->string('address');
+            $table->string('city');
+            $table->string('picture_house')->nullable();
             $table->timestamps();
-        });
+    });
     }
 
     /**
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('huisdier');
+        Schema::dropIfExists('huizen');
     }
 };

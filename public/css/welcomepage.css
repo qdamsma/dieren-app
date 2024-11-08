@@ -97,3 +97,104 @@ h1{
     width: 100%;
     max-width: 100%; 
 }
+
+
+/* Container voor de huisdieren */
+.pet-container {
+    display: flex; /* Gebruik flexbox om de items naast elkaar te plaatsen */
+    flex-wrap: wrap; /* Zorg ervoor dat ze naar een nieuwe rij verhuizen als er niet genoeg ruimte is */
+    justify-content: space-between; /* Zorg voor gelijkmatige ruimte tussen de kaarten */
+    gap: 20px; /* Voeg wat ruimte tussen de kaarten toe */
+    margin-top: 20px;
+    width: 200px;
+}
+
+/* Stijl voor elke huisdierkaart */
+.pet-card {
+    width: 200px;
+    background-color: white; 
+    padding: 20px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    overflow: hidden; 
+    transition: transform 0.3s ease; 
+}
+
+.pet-card:hover {
+    transform: translateY(-10px); 
+}
+
+/* Stijl voor de huisdiernaam */
+.pet-card h3 {
+    font-size: 1.5rem;
+    color: #7f6a53; 
+    margin-bottom: 10px; 
+}
+
+/* Stijl voor de huisdierleeftijd */
+.pet-card p {
+    font-size: 1rem; 
+    color: #8d6e63; 
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* De cards container: een flexbox om ze mooi naast elkaar te plaatsen */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.cards-wrapper {
+    display: flex;
+    justify-content: center; /* Zorgt ervoor dat de cards horizontaal gecentreerd zijn */
+    gap: 20px; /* Ruimte tussen de cards */
+    margin-top: 20px;
+    flex-wrap: wrap; /* Zorgt ervoor dat de cards in een nieuwe rij komen bij smallere schermen */
+}
+
+/* Elke card krijgt een aparte stijl */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: calc(33% - 20px); /* 3 cards per rij */
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Zorg ervoor dat de cards goed reageren bij kleinere schermen */
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 20px); /* 2 cards per rij */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%; /* 1 card per rij */
+    }
+}
+
+/* Stijlen voor de titels en tekst binnen de cards */
+.card h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1em;
+    color: #333;
+}
+
+.card p strong {
+    font-weight: bold;
+}

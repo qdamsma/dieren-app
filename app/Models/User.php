@@ -12,6 +12,16 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    public function huisdieren()
+    {
+    return $this->hasMany(Huisdier::class, 'eigenaar_id'); 
+    }
+
+    public function huizen()
+    {
+    return $this->hasMany(Huis::class, 'eigenaar_id'); 
+    }
+
     /**
      * The attributes that are mass assignable.
      *

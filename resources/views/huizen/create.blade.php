@@ -39,34 +39,29 @@
     <a href="{{ route('dashboard') }}">
         <button type="button" class="button">Terug</button>
     </a>
-    <form method="POST" action="{{ route('huisdieren.store') }}" enctype="multipart/form-data" class="form-container">
+    <form method="POST" action="{{ route('huis.store') }}" enctype="multipart/form-data" class="form-container">
         @csrf
-   
+    
+        <!-- Huis Gegevens -->
         <div>
-            <label for="name">Naam</label>
-            <input id="name" type="text" name="name" value="{{ old('name') }}" required>
-            @error('name') <span class="error">{{ $message }}</span> @enderror
+            <label for="address">Adres van je huis</label>
+            <input id="address" type="text" name="address" value="{{ old('address') }}" required>
+            @error('address') <span class="error">{{ $message }}</span> @enderror
         </div>
     
         <div>
-            <label for="age">Leeftijd</label>
-            <input id="age" type="text" name="age" value="{{ old('age') }}" required>
-            @error('age') <span class="error">{{ $message }}</span> @enderror
+            <label for="city">Stad</label>
+            <input id="city" type="text" name="city" value="{{ old('city') }}" required>
+            @error('city') <span class="error">{{ $message }}</span> @enderror
         </div>
     
         <div>
-            <label for="animaltype">Soort dier</label>
-            <input id="animaltype" type="text" name="animaltype" value="{{ old('animaltype') }}" required>
-            @error('animaltype') <span class="error">{{ $message }}</span> @enderror
+            <label for="picture_house">Foto huis</label>
+            <input id="picture_house" type="file" name="picture_house" required>
+            @error('picture_house') <span class="error">{{ $message }}</span> @enderror
         </div>
     
-        <div>
-            <label for="note">Beschrijving</label>
-            <textarea id="note" name="note">{{ old('note') }}</textarea>
-            @error('note') <span class="error">{{ $message }}</span> @enderror
-        </div>
-    
-        <button type="submit" class="button">Maak Huisdier aan</button>
+        <button type="submit" class="button">Maak Huis aan</button>
     </form>
 
     @if (session('success'))

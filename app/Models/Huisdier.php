@@ -11,4 +11,13 @@ class Huisdier extends Model
     protected $fillable = [
         'name', 'eigenaar_id', 'age', 'animaltype', 'note',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id');
+    }
+    
+    public function afspraken()
+    {
+        return $this->hasMany(Afspraak::class, 'huisdier_id');
+    }
 }

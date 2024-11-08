@@ -61,6 +61,24 @@
                 <button type="button" class="button">Bewerk</button>
             </a>
         </div>
+        <div class="pet-container">
+            @foreach ($huisdieren as $huisdier)
+                <div class="pet-card">
+                    <h3>{{ $huisdier->name }}</h3>
+                    <p>{{ $huisdier->age }}</p>
+                </div>
+            @endforeach
+        </div>
+        <div class="pet-container">
+            @foreach ($huizen as $huis)
+                <div class="pet-card">
+                    <p><strong>Adres:</strong> {{ $huis->address }}</p>
+                    <p><strong>Stad:</strong> {{ $huis->city }}</p>
+                    <img src="{{ Storage::url($huis->picture_house) }}" alt="Foto van het huis" class="house-image">
+                </div>
+            @endforeach
+        </div>
+        
 
         <div class="button-container">
             <a href="{{ route('dashboard') }}" class="button">Terug naar Dashboard</a>

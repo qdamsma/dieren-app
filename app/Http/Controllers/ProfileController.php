@@ -61,7 +61,18 @@ class ProfileController extends Controller
     public function show()
     {
         $user = auth()->user();
+        $huisdieren = $user->huisdieren; 
 
-        return view('profile.show', compact('user'));
+        if ($huisdieren === null) {
+            $huisdieren = [];
+        }
+
+        $huizen = $user->huizen; 
+
+        if ($huizen === null) {
+            $huizen = [];
+        }
+
+        return view('profile.show', compact('user', 'huisdieren', 'huizen'));
     }
 }

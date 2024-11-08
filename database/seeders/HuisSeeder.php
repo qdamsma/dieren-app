@@ -13,10 +13,19 @@ class HuisSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('huis')->insert([
-            "address" => "blablabla10",
-            "city" => "Leiden",
-            "eigenaar_id" => "2",       
+        DB::table('huizen')->insert([
+            [
+                "eigenaar_id" => "1",
+                'address' => '123 Straatnaam',
+                'city' => 'Amsterdam',
+                'picture_house' => 'public/images/Logo.png',
+            ],
+            [
+                "eigenaar_id" => "2",
+                'address' => '456 Laanstraat',
+                'city' => 'Rotterdam',
+                'picture_house' => 'public/images/Logo.png',
+            ],
         ]);
     }
 }

@@ -35,13 +35,40 @@
         </ul>
     </nav>
     <header class="intro">
-        <div class="container">
-            <h1>Dashboard</h1>
-            <div class="header">
-                <h2>Maak een profiel voor je huisdier</h2>
-                <a href="{{ route('huisdieren.create') }}" class="btn btn-primary">Nieuw profiel aanmaken</a>
+        <div class="afspraak-container">
+            <div class="cards-wrapper">
+                <div class="card">
+                    <h3>Stap 1: Maak een profiel voor je huisdier</h3>
+                    <p>Maak eenvoudig een profiel aan voor je huisdier en beheer de afspraken.</p>
+                    <a href="{{ route('huisdieren.create') }}" class="button">Nieuw profiel aanmaken</a>
+                </div>
+                <div class="card">
+                    <h3>Stap 2: Maak een Huis aan</h3>
+                    <p>Maak een huis aan waar er opgepast gaat worden op je huidier</p>
+                    <a href="{{ route('huis.create') }}" class="button">Nieuwe huis maken</a>
+                </div>
+                <div class="card">
+                    <h3>Stap 2: Maak een nieuwe afspraak</h3>
+                    <p>Plan een nieuwe afspraak voor je huisdier en kies een datum en tijd.</p>
+                    <a href="{{ route('huisdieren.create') }}" class="button">Nieuwe afspraak maken</a>
+                </div>
             </div>
-            <!-- Je overige dashboard content hier -->
+            <h2>Afspraken</h2>
+            @if($afspraken->isEmpty())
+                <p>Er zijn momenteel geen afspraken.</p>
+            @else
+                <div class="cards-container">
+                    @foreach($afspraken as $afspraak)
+                        <div class="card">
+                            <h3>{{ $afspraak->huisdier->name }}</h3>
+                            <p>{{ $afspraak->huisdier->animaltype }}</p>
+                            <p><strong>Startdatum:</strong> {{ $afspraak->start_datum }}</p>
+                            <p><strong>Einddatum:</strong> {{ $afspraak->eind_datum }}</p>
+                            <p><strong>Uurtarief:</strong> €{{ $afspraak->uurtarief }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </header>
 </body>

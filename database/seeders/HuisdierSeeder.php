@@ -19,7 +19,20 @@ class HuisdierSeeder extends Seeder
             "eigenaar_id" => "2",
             "age" => "5",
             "animaltype" => "Olifant",  
-            "note" => "heeft last van linkerpoot, neemt medicijnen. Kijk uit bij medicijnen voeren",       
+            "note" => "heeft last van linkerpoot, neemt medicijnen. Kijk uit bij medicijnen voeren",      
         ]);
+        DB::table('huisdier')->insert([
+            "name" => "Mollie",
+            "eigenaar_id" => "1",
+            "age" => "20",
+            "animaltype" => "Kat",    
+        ]);
+        // DB::table('huisdier')->insert([
+        //     "name" => "Lotje",
+        //     "eigenaar_id" => "1",
+        //     "age" => "20",
+        //     "animaltype" => "Kat",  
+        //     "huis_id" => "1",   
+        // ]);
     }
 }
